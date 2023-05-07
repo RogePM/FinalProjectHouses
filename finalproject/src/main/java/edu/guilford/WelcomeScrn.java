@@ -96,7 +96,7 @@ public class WelcomeScrn extends Application {
 
         // sets number of properties to display
         ArrayList<PropertyList> propertiesList = PropertyList.generateRandomPropertyList(27);
-
+        // creates gridpane
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(20);
@@ -113,10 +113,11 @@ public class WelcomeScrn extends Application {
                     property.getCity(), property.getState(), property.getZip(), property.getPrice(),
                     property.getStatus());
             Label propertyLabel = new Label(propertyString);
-
-            // image
-            File image = new File(this.getClass().getResource("houses.jpg").getPath());
-            ImageView propertyImage = new ImageView(image.getPath());
+            
+            // image for property
+            String imagePath = PropertyImages.IMAGE_PATHS[(int) (Math.random() * PropertyImages.IMAGE_PATHS.length)];
+            File image = new File(imagePath);
+            ImageView propertyImage = new ImageView(new Image(image.toURI().toString()));
             propertyImage.setFitWidth(200);
             propertyImage.setFitHeight(200);
             propertyImage.setPreserveRatio(true);
